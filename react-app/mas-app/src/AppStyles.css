@@ -25,3 +25,8 @@
 .varContainer {
     margin-bottom: 5vh;
 }
+.varContainerRow {
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: row;
+}

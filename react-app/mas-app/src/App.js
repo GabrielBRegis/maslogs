@@ -7,8 +7,10 @@ import 'react-input-range/lib/css/index.css';
 import InputRange from 'react-input-range';
 import './AppStyles.css';
 import ReactChartkick, { LineChart, PieChart } from 'react-chartkick';
-import Highcharts from 'highcharts';
+import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
+import ToggleButton from 'react-toggle-button';
+import { RadioGroup, Radio } from 'react-radio-group';
 
 const throttle = (func, limit) => {
     let inThrottle;
@@ -27,31 +29,22 @@ ReactChartkick.addAdapter(Highcharts);
 
 class App extends Component {
     state = {
-        server: 1,
+        serverName: 'MrBurns',
         yearValue: { min: 2014, max: 2018 },
         monthValue: { min: 1, max: 12 },
         dayValue: { min: 1, max: 31 },
         hourValue: { min: 0, max: 23 },
-        minValue: { min: 10, max: 50 },
-        xLabel: 0,
+        xLabel: 'ANO',
         data: [
-            { name: 'r', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'b', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'swp', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'free', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'buff', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'si', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'so', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'bo', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'in', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'cs', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'us', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'svalue', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'id', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'wa', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
-            { name: 'st', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] }
+            { name: 'r', data: [1, 2], visible: true },
+            { name: 'sy', data: [1, 2], visible: true },
+            { name: 'us', data: [1, 2], visible: true },
+            { name: 'rMax', data: [1, 2], visible: true },
+            { name: 'syMax', data: [1, 2], visible: true },
+            { name: 'usMax', data: [1, 2], visible: true }
         ],
-        clicked: false
+        clicked: false,
+        selectedValue: 0
     };
 
     componentDidMount() {
@@ -63,11 +56,6 @@ class App extends Component {
 
     onYearChanged = (value) => {
         this.setState({ yearValue: value });
-        this.updateData();
-    };
-
-    onMinuteChanged = (value) => {
-        this.setState({ minValue: value });
         this.updateData();
     };
 
@@ -88,9 +76,13 @@ class App extends Component {
 
     updateData = () => {
         if (!this.state.clicked) {
-            getData().then((data) => {
+            const params = {
+                serverName: this.state.serverName
+            };
+
+            getData(params).then((data) => {
                 console.log(data);
-                if (data) {
+                if (Object.keys(data).length > 0) {
                     this.setState({
                         data: data.data
                     });
@@ -107,11 +99,99 @@ class App extends Component {
         }
     };
 
+    updateLabels = () => {
+        this.state.data[0].visible = false;
+    };
+
+    changeServer = (value) => {
+        this.setState(
+            {
+                serverName: value
+            },
+            () => this.updateData()
+        );
+    };
+
     render() {
-        //const data = this.state.data[0].data;
+        const data = this.state.data[0].data;
         const options = {
             title: {
                 text: 'VM Stat'
+            },
+            plotOptions: {
+                series: {
+                    turboThreshold: 500000 //larger threshold or set to 0 to disable
+                }
+            },
+            rangeSelector: {
+                buttons: [
+                    {
+                        type: 'hour',
+                        count: 1,
+                        text: '1hr'
+                    },
+                    {
+                        type: 'hour',
+                        count: 3,
+                        text: '3hr'
+                    },
+                    {
+                        type: 'hour',
+                        count: 12,
+                        text: '12hr'
+                    },
+                    {
+                        type: 'day',
+                        count: 1,
+                        text: '1d'
+                    },
+                    {
+                        type: 'day',
+                        count: 3,
+                        text: '3d'
+                    },
+                    {
+                        type: 'day',
+                        count: 5,
+                        text: '5d'
+                    },
+                    {
+                        type: 'day',
+                        count: 7,
+                        text: '7d'
+                    },
+                    {
+                        type: 'month',
+                        count: 1,
+                        text: '1m'
+                    },
+                    {
+                        type: 'month',
+                        count: 3,
+                        text: '3m'
+                    },
+                    {
+                        type: 'month',
+                        count: 6,
+                        text: '6m'
+                    },
+                    {
+                        type: 'year',
+                        count: 1,
+                        text: '1y'
+                    },
+                    {
+                        type: 'all',
+                        text: 'All'
+                    }
+                ],
+                selected: 2
+            },
+            chart: {
+                zoomType: 'x'
+            },
+            xAxis: {
+                type: 'datetime'
             },
             // xAxis: {
             //     tickInterval: 1,
@@ -129,29 +209,97 @@ class App extends Component {
             <div className="mainContainer">
                 <div className="navBar">
                     <div className="varContainer">
-                        <div className="label">Ano</div>
-                        <InputRange maxValue={2018} minValue={2014} value={this.state.yearValue} onChange={(yearValue) => this.onYearChanged(yearValue)} />
-                    </div>
-                    <div className="varContainer">
-                        <div className="label">Mês</div>
-                        <InputRange maxValue={12} minValue={1} value={this.state.monthValue} onChange={(monthValue) => this.onMonthChanged(monthValue)} />
-                    </div>
-                    <div className="varContainer">
-                        <div className="label">Dia</div>
-                        <InputRange maxValue={30} minValue={1} value={this.state.dayValue} onChange={(dayValue) => this.onDayChanged(dayValue)} />
-                    </div>
-                    <div className="varContainer">
-                        <div className="label">Hora</div>
-                        <InputRange maxValue={23} minValue={1} value={this.state.hourValue} onChange={(hourValue) => this.onHourChanged(hourValue)} />
-                    </div>
-                    <div className="varContainer">
-                        <div className="label">Minuto</div>
-                        <InputRange maxValue={50} minValue={0} value={this.state.minValue} onChange={(minValue) => this.onMinuteChanged(minValue)} />
+                        <RadioGroup name="fruit" selectedValue={this.state.serverName} onChange={this.changeServer}>
+                            <Radio value="MrBurns" />MrBurns
+                            <Radio value="yogafire" />Yogafire
+                            <Radio value="neo-slayer" />NeoSlayer
+                        </RadioGroup>
+                        <div className="varContainerRow">
+                            <div className="varContainer">
+                                <div className="label">R</div>
+                                <ToggleButton
+                                    value={this.state.data[0].visible}
+                                    onToggle={(value) => {
+                                        var data = this.state.data;
+                                        data[0].visible = !data[0].visible;
+                                        this.setState({
+                                            data: data
+                                        });
+                                    }}
+                                />
+                            </div>
+                            <div className="varContainer">
+                                <div className="label">SY</div>
+                                <ToggleButton
+                                    value={this.state.data[1].visible}
+                                    onToggle={(value) => {
+                                        var data = this.state.data;
+                                        data[1].visible = !data[1].visible;
+                                        this.setState({
+                                            data: data
+                                        });
+                                    }}
+                                />
+                            </div>
+                            <div className="varContainer">
+                                <div className="label">US</div>
+                                <ToggleButton
+                                    value={this.state.data[2].visible}
+                                    onToggle={(value) => {
+                                        var data = this.state.data;
+                                        data[2].visible = !data[2].visible;
+                                        this.setState({
+                                            data: data
+                                        });
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <div className="varContainerRow">
+                            <div className="varContainer">
+                                <div className="label">RMax</div>
+                                <ToggleButton
+                                    value={this.state.data[3].visible}
+                                    onToggle={(value) => {
+                                        var data = this.state.data;
+                                        data[3].visible = !data[3].visible;
+                                        this.setState({
+                                            data: data
+                                        });
+                                    }}
+                                />
+                            </div>
+                            <div className="varContainer">
+                                <div className="label">SYMax</div>
+                                <ToggleButton
+                                    value={this.state.data[4].visible}
+                                    onToggle={(value) => {
+                                        var data = this.state.data;
+                                        data[4].visible = !data[4].visible;
+                                        this.setState({
+                                            data: data
+                                        });
+                                    }}
+                                />
+                            </div>
+                            <div className="varContainer">
+                                <div className="label">USMax</div>
+                                <ToggleButton
+                                    value={this.state.data[5].visible}
+                                    onToggle={(value) => {
+                                        var data = this.state.data;
+                                        data[5].visible = !data[5].visible;
+                                        this.setState({
+                                            data: data
+                                        });
+                                    }}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="chartContainer">
-                    {/* <LineChart data={this.state.data} /> */}
-                    <HighchartsReact highcharts={Highcharts} options={options} />
+                    <HighchartsReact highcharts={Highcharts} constructorType={'stockChart'} options={options} />
                 </div>
                 <p className="App-intro">{}</p>
             </div>

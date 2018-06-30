@@ -1073,6 +1073,21 @@ body-parser@1.18.2:
     raw-body "2.3.2"
     type-is "~1.6.15"
 
+body-parser@^1.18.3:
+  version "1.18.3"
+  resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.3.tgz#5b292198ffdd553b3a0f20ded0592b956955c8b4"
+  dependencies:
+    bytes "3.0.0"
+    content-type "~1.0.4"
+    debug "2.6.9"
+    depd "~1.1.2"
+    http-errors "~1.6.3"
+    iconv-lite "0.4.23"
+    on-finished "~2.3.0"
+    qs "6.5.2"
+    raw-body "2.3.3"
+    type-is "~1.6.16"
+
 bonjour@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/bonjour/-/bonjour-3.5.0.tgz#8e890a183d8ee9a2393b3844c691a42bcf7bc9f5"
@@ -1715,13 +1730,20 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-react-class@^15.5.3:
+create-react-class@^15.5.3, create-react-class@^15.6.0:
   version "15.6.3"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
   dependencies:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
+
+create-react-context@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/create-react-context/-/create-react-context-0.2.2.tgz#9836542f9aaa22868cd7d4a6f82667df38019dca"
+  dependencies:
+    fbjs "^0.8.0"
+    gud "^1.0.0"
 
 cross-spawn@5.1.0, cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
@@ -2797,7 +2819,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.16, fbjs@^0.8.9:
+fbjs@^0.8.0, fbjs@^0.8.16, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   dependencies:
@@ -3149,6 +3171,10 @@ growly@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
 
+gud@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
+
 gzip-size@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/gzip-size/-/gzip-size-3.0.0.tgz#546188e9bdc337f673772f81660464b389dce520"
@@ -3261,6 +3287,18 @@ highcharts-react-official@^1.2.0:
     highcharts "^6.0.1"
     highstock-release "^6.0.1"
 
+highcharts-react@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/highcharts-react/-/highcharts-react-0.0.3.tgz#a5e0daf90139aa226b676770ab1831ebc84d2b9c"
+  dependencies:
+    highcharts "^5.0.12"
+    react "^15.6.1"
+    react-dom "^15.6.1"
+
+highcharts@^5.0.12:
+  version "5.0.15"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-5.0.15.tgz#a9af11538a85b85f300e66f7a0e048a7ef8ab381"
+
 highcharts@^6.0.1, highcharts@^6.1.1:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-6.1.1.tgz#49dc34f5e963744ecd7eb87603b6cdaf8304c13a"
@@ -3362,7 +3400,7 @@ http-errors@1.6.2:
     setprototypeof "1.0.3"
     statuses ">= 1.3.1 < 2"
 
-http-errors@~1.6.2:
+http-errors@1.6.3, http-errors@~1.6.2, http-errors@~1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.6.3.tgz#8b55680bb4be283a0b5bf4ea2e38580be1d9320d"
   dependencies:
@@ -3408,7 +3446,7 @@ iconv-lite@0.4.19:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
 
-iconv-lite@^0.4.17, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
+iconv-lite@0.4.23, iconv-lite@^0.4.17, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.23"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
   dependencies:
@@ -3437,6 +3475,10 @@ ignore-walk@^3.0.1:
 ignore@^3.3.3:
   version "3.3.10"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
+
+immutable-is@^3.7.6:
+  version "3.7.6"
+  resolved "https://registry.yarnpkg.com/immutable-is/-/immutable-is-3.7.6.tgz#efad8bcf21443392402e10fa08b7aa91b65f6c30"
 
 import-lazy@^2.1.0:
   version "2.1.0"
@@ -3676,6 +3718,10 @@ is-glob@^4.0.0:
   resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.0.tgz#9521c76845cc2610a85203ddf080a958c2ffabc0"
   dependencies:
     is-extglob "^2.1.1"
+
+is-immutable@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-immutable/-/is-immutable-1.0.1.tgz#0b72499d2134c0344fd3b4e24f3f0a0125b70148"
 
 is-installed-globally@^0.1.0:
   version "0.1.0"
@@ -4354,6 +4400,10 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
+lodash-es@^4.17.5:
+  version "4.17.10"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.10.tgz#62cd7104cdf5dd87f235a837f0ede0e8e5117e05"
+
 lodash._reinterpolate@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
@@ -4395,7 +4445,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-"lodash@>=3.5 <5", lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.3.0:
+"lodash@>=3.5 <5", lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
 
@@ -5152,6 +5202,10 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+performance-now@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
+
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
@@ -5599,7 +5653,7 @@ qs@6.5.1:
   version "6.5.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
-qs@~6.5.1:
+qs@6.5.2, qs@~6.5.1:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
 
@@ -5626,7 +5680,7 @@ querystringify@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.0.0.tgz#fa3ed6e68eb15159457c89b37bc6472833195755"
 
-raf@3.4.0:
+raf@3.4.0, raf@^3.1.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
   dependencies:
@@ -5664,6 +5718,15 @@ raw-body@2.3.2:
     bytes "3.0.0"
     http-errors "1.6.2"
     iconv-lite "0.4.19"
+    unpipe "1.0.0"
+
+raw-body@2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/raw-body/-/raw-body-2.3.3.tgz#1b324ece6b5706e153855bc1148c65bb7f6ea0c3"
+  dependencies:
+    bytes "3.0.0"
+    http-errors "1.6.3"
+    iconv-lite "0.4.23"
     unpipe "1.0.0"
 
 rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
@@ -5733,6 +5796,15 @@ react-dev-utils@^5.0.1:
     strip-ansi "3.0.1"
     text-table "0.2.0"
 
+react-dom@^15.6.1:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
+    prop-types "^15.5.10"
+
 react-dom@^16.4.1:
   version "16.4.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.1.tgz#7f8b0223b3a5fbe205116c56deb85de32685dad6"
@@ -5765,6 +5837,41 @@ react-input-range@^1.3.0:
   resolved "https://registry.yarnpkg.com/react-input-range/-/react-input-range-1.3.0.tgz#f96d001631ab817417f1e26d8f9f9684b4827f59"
   dependencies:
     autobind-decorator "^1.3.4"
+    prop-types "^15.5.8"
+
+react-jsx-highcharts@3.1.0, react-jsx-highcharts@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-jsx-highcharts/-/react-jsx-highcharts-3.1.0.tgz#8b0c618bb4297c4670d1a5af3d30b8f967e0d332"
+  dependencies:
+    babel-runtime "^6.26.0"
+    create-react-context "^0.2.2"
+    immutable-is "^3.7.6"
+    is-immutable "^1.0.1"
+    lodash "^4.17.5"
+    lodash-es "^4.17.5"
+    uuid "^3.2.1"
+
+react-jsx-highstock@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-jsx-highstock/-/react-jsx-highstock-3.1.0.tgz#096bcd7ffbea9c93e5aec81a0413749bbd2150f0"
+  dependencies:
+    babel-runtime "^6.26.0"
+    lodash "^4.17.5"
+    lodash-es "^4.17.5"
+    react-jsx-highcharts "3.1.0"
+
+react-motion@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.5.2.tgz#0dd3a69e411316567927917c6626551ba0607316"
+  dependencies:
+    performance-now "^0.2.0"
+    prop-types "^15.5.8"
+    raf "^3.1.0"
+
+react-radio-group@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-radio-group/-/react-radio-group-3.0.3.tgz#60bb29c7ad05d8b6f67cf443af0767ee2007cf98"
+  dependencies:
     prop-types "^15.5.8"
 
 react-rangeslider@^2.2.0:
@@ -5824,6 +5931,23 @@ react-svg@^4.0.17:
   resolved "https://registry.yarnpkg.com/react-svg/-/react-svg-4.0.17.tgz#523e3e55105e3def67581653010aed88566dd14e"
   dependencies:
     "@tanem/svg-injector" "^1.1.9"
+
+react-toggle-button@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-toggle-button/-/react-toggle-button-2.2.0.tgz#a1b92143aa0df414642fcb141f0879f545bc5a89"
+  dependencies:
+    prop-types "^15.6.0"
+    react-motion "^0.5.2"
+
+react@^15.6.1:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-15.6.2.tgz#dba0434ab439cfe82f108f0f511663908179aa72"
+  dependencies:
+    create-react-class "^15.6.0"
+    fbjs "^0.8.9"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
+    prop-types "^15.5.10"
 
 react@^16.4.1:
   version "16.4.1"
