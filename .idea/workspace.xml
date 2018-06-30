@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31471e10-ce58-4d1c-ad4e-2ff3005d74cc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs.db" afterPath="$PROJECT_DIR$/logs.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MasLogs/DatabaseMain.class" afterPath="$PROJECT_DIR$/out/production/MasLogs/DatabaseMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/50b4dcb7-d665-497b-a39b-de8c6a002614.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/50b4dcb7-d665-497b-a39b-de8c6a002614.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-app/mas-app/package.json" afterPath="$PROJECT_DIR$/react-app/mas-app/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-app/mas-app/src/App.js" afterPath="$PROJECT_DIR$/react-app/mas-app/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-app/mas-app/src/index.css" afterPath="$PROJECT_DIR$/react-app/mas-app/src/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-app/mas-app/src/index.js" afterPath="$PROJECT_DIR$/react-app/mas-app/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-app/mas-app/yarn.lock" afterPath="$PROJECT_DIR$/react-app/mas-app/yarn.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/react-app/mas-app/src/Api.js" afterPath="$PROJECT_DIR$/react-app/mas-app/src/Api.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -362,12 +354,12 @@
       <workItem from="1528410625473" duration="2948000" />
       <workItem from="1530150077767" duration="1864000" />
       <workItem from="1530235575418" duration="1644000" />
-      <workItem from="1530317197412" duration="2591000" />
+      <workItem from="1530317197412" duration="2750000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16804000" />
+    <option name="totallyTimeSpent" value="16963000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="800" extended-state="0" />

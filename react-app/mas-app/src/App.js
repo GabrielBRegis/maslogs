@@ -10,16 +10,29 @@ import ReactChartkick, { LineChart, PieChart } from 'react-chartkick';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
+const throttle = (func, limit) => {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+        }
+    };
+};
+
 ReactChartkick.addAdapter(Highcharts);
 
 class App extends Component {
     state = {
         server: 1,
         yearValue: { min: 2014, max: 2018 },
-        mothValue: { min: 1, max: 12 },
+        monthValue: { min: 1, max: 12 },
         dayValue: { min: 1, max: 31 },
         hourValue: { min: 0, max: 23 },
-        minValue: { min: 0, max: 50 },
+        minValue: { min: 10, max: 50 },
         xLabel: 0,
         data: [
             { name: 'r', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
@@ -37,7 +50,8 @@ class App extends Component {
             { name: 'id', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
             { name: 'wa', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] },
             { name: 'st', data: [['2014', 29.9], ['2015', 71.5], ['2016', 106.4]] }
-        ]
+        ],
+        clicked: false
     };
 
     componentDidMount() {
@@ -73,29 +87,41 @@ class App extends Component {
     };
 
     updateData = () => {
-        const data = getData();
-        if (data) {
-            this.setState({
-                data: data
+        if (!this.state.clicked) {
+            getData().then((data) => {
+                console.log(data);
+                if (data) {
+                    this.setState({
+                        data: data.data
+                    });
+                }
             });
+            this.setState({
+                clicked: true
+            });
+            setTimeout(() => {
+                this.setState({
+                    clicked: false
+                });
+            }, 700);
         }
     };
 
     render() {
-        const data = this.state.data[0].data;
+        //const data = this.state.data[0].data;
         const options = {
             title: {
                 text: 'VM Stat'
             },
-            xAxis: {
-                tickInterval: 1,
-                labels: {
-                    enabled: true,
-                    formatter: function() {
-                        return data[this.value][0];
-                    }
-                }
-            },
+            // xAxis: {
+            //     tickInterval: 1,
+            //     labels: {
+            //         enabled: true,
+            //         formatter: function() {
+            //             return data[this.value][0];
+            //         }
+            //     }
+            // },
             series: this.state.data
         };
 
@@ -108,7 +134,7 @@ class App extends Component {
                     </div>
                     <div className="varContainer">
                         <div className="label">Mês</div>
-                        <InputRange maxValue={12} minValue={1} value={this.state.mothValue} onChange={(monthValue) => this.onMonthChanged(monthValue)} />
+                        <InputRange maxValue={12} minValue={1} value={this.state.monthValue} onChange={(monthValue) => this.onMonthChanged(monthValue)} />
                     </div>
                     <div className="varContainer">
                         <div className="label">Dia</div>
